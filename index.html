@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Nav & Scroll Indicator</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        position: relative;
+        text-align: center;
+        font-family: sans-serif;
+    }
+
+    .scroll-indicator {
+        z-index: 9;
+        position: fixed;
+        top: 0;
+        background-color: rgb(255, 78, 72);
+        width: 0%;
+        height: 3px;
+        border-radius: 2px;
+    }
+
+    header img {
+        margin: auto;
+        width: 20rem;
+        margin-bottom: 1rem;
+    }
+
+    nav {
+        z-index: 1;
+        background-color: rgb(165, 247, 43);
+        padding: 5px 0;
+        transition: all 2s;
+    }
+
+    .para {
+        margin: 2rem 0;
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+        text-align: justify;
+        padding: 5px;
+    }
+
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+</style>
+
+<body>
+    <div class="scroll-indicator">
+
+    </div>
+    <header>
+        <img src="img/saison-logo.png" alt="">
+    </header>
+    <nav id="nav">
+        <h2>Navigation Bar</h2>
+    </nav>
+    <div class="para">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, quod natus laboriosam velit reiciendis
+        itaque doloremque ducimus fuga vitae consectetur quibusdam assumenda impedit sunt! Laboriosam id esse, eligendi
+        sit animi eius itaque a, ipsum voluptatem numquam dicta veniam assumenda fugiat. Hic eveniet sit ducimus
+        consequatur aliquam officia, commodi numquam veritatis molestiae exercitationem, quibusdam reiciendis voluptate,
+        dolore quis est nisi a amet dolor sequi id aperiam ipsa? Laudantium maiores blanditiis non soluta illum velit!
+        Fugit nisi asperiores exercitationem nostrum. Earum, animi? At odio nisi facilis ex? Sunt quo deleniti, sint
+        dolores in illo fugiat atque non excepturi corrupti nulla ex commodi, ad eveniet alias ab. Quae eveniet quia cum
+        nihil dignissimos et hic labore quod ipsa debitis, est atque, architecto nulla, minus praesentium! Nemo neque
+        maiores, doloribus magnam sint, aperiam quibusdam voluptates voluptatibus labore blanditiis excepturi recusandae
+        reiciendis amet iste veniam expedita odio quaerat odit minima voluptatum eos ipsa consequatur consectetur!
+        Saepe, a repudiandae necessitatibus minima nam iste tenetur explicabo. Hic, temporibus dignissimos! Nisi, eius
+        molestias! Rem modi animi, laudantium veritatis id obcaecati necessitatibus dicta aliquam accusamus molestias,
+        ad natus non cupiditate magni voluptatum! Aspernatur inventore quae, voluptas quis vitae similique officiis!
+        Sapiente possimus minima quibusdam perferendis aperiam sequi, quia sint consequatur facere quae reprehenderit.
+        Delectus debitis perspiciatis quo impedit amet expedita, est placeat vel aliquam rerum quis natus deleniti
+        nostrum minus! Dolorum aut soluta non harum eum eius error veniam quam quod debitis magnam ipsum, quis omnis
+        repudiandae excepturi? Labore facere excepturi nisi sed cupiditate, dolor eaque accusamus delectus fugiat illum,
+        nobis quibusdam exercitationem ea quae maxime odio ad perferendis mollitia rerum aut hic molestiae expedita,
+        saepe nemo! Velit aliquam accusantium odit cum, explicabo qui quo consequuntur harum? Similique, nisi nobis.
+        Dolorem laborum blanditiis eos praesentium eveniet molestiae, quidem repellat sit deleniti quam magnam non sint
+        ducimus, veritatis voluptatibus nulla placeat ut? Quidem assumenda itaque aspernatur rerum! Totam eum quas harum
+        neque doloribus eos nisi atque et sint quisquam culpa debitis excepturi, ducimus pariatur reprehenderit corporis
+        qui tempore dolor fuga ipsam libero tempora nihil repudiandae voluptatem? Eius laborum nam necessitatibus,
+        distinctio modi maxime aperiam soluta non quis odit dolor earum maiores saepe totam pariatur eaque perspiciatis
+        illo incidunt veritatis vero minima animi? Minima a, aliquam cupiditate cumque animi fugit labore eos sit
+        ducimus minus nostrum? Aut dicta at fugit enim quos esse laudantium reprehenderit ut quas? Possimus pariatur
+        mollitia dolore omnis atque, eveniet placeat natus nam tempore iusto aliquam unde ipsum odit cumque dolorum sint
+        quaerat voluptas adipisci at saepe laudantium. Iste earum ipsa obcaecati commodi aspernatur ullam doloremque
+        ipsum quas laudantium asperiores quo eum, qui quam dignissimos, dicta id, quae nesciunt magni maxime suscipit?
+        Officiis reiciendis molestiae repellendus iste quod debitis error accusantium ipsa facilis at! Expedita saepe
+        doloribus id odio corrupti. Eius consequuntur natus perspiciatis nam illo quae, provident voluptas porro,
+        possimus nemo sapiente facilis tempora molestiae dicta at hic repellendus libero, voluptatibus ab maiores
+        ducimus sit fugit et! Dicta fugit maiores doloribus asperiores vitae sit sapiente, sunt dolorem, iure esse quos
+        sed possimus nostrum mollitia enim modi!
+    </div>
+
+    <script>
+        let nav = document.getElementById('nav')
+        console.log(nav)
+        window.addEventListener('scroll', function () {
+            sticky();
+        })
+        function sticky() {
+            /*      console.clear()
+                 console.log(window.pageYOffset) */
+
+            if (window.pageYOffset >= 144.484) {
+                nav.classList.add("sticky");
+            } else {
+                nav.classList.remove("sticky");
+            }
+
+            let html = document.documentElement;
+            let scrollHeight = html.scrollHeight;
+            console.log(scrollHeight)
+            let clientHeight = html.clientHeight;
+            console.log(clientHeight)
+            let remainHeight = scrollHeight - clientHeight
+
+            let percent = (html.scrollTop / remainHeight) * 100;
+            console.log(percent)
+
+            let scrollIndicator = document.getElementsByClassName('scroll-indicator')
+            console.log(scrollIndicator)
+            scrollIndicator[0].style.width = percent + '%';
+        }
+
+    </script>
+</body>
+
+</html>
